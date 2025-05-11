@@ -1,0 +1,28 @@
+# Swap and backup files
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Lock files
+lazy-lock.json
+*.lock
+
+# Node modules
+node_modules/
+lua/**/node_modules/
+
+# Compiled plugin files
+plugin/packer_compiled.lua
+
+# .DS_Store (macOS metadata)
+.DS_Store
+
+# Log files
+*.log
+
+# Undo/backup dirs (if used)
+.undodir/
+.backup/
+.swap/
+
