@@ -11,21 +11,74 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  -- 🌌 Theme
   { "folke/tokyonight.nvim", lazy = false, priority = 1000 },
+
+  -- 🌟 UI
   { "nvim-lualine/lualine.nvim" },
-  { "nvim-tree/nvim-tree.lua", dependencies = { "nvim-tree/nvim-web-devicons" } },
-  { "nvim-tree/nvim-web-devicons" },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- still needed for icons
+      "MunifTanjim/nui.nvim",
+    },
+  },
+
+  -- 🔭 Telescope
   { "nvim-telescope/telescope.nvim", dependencies = { "nvim-lua/plenary.nvim" } },
+
+  -- 🌱 Git Integration
   { "lewis6991/gitsigns.nvim" },
+
+  -- 🧠 Completion
   { "hrsh7th/nvim-cmp" },
   { "hrsh7th/cmp-nvim-lsp" },
   { "hrsh7th/cmp-buffer" },
+
+  -- ✂️ Snippets
   { "L3MON4D3/LuaSnip" },
   { "saadparwaiz1/cmp_luasnip" },
   { "rafamadriz/friendly-snippets" },
+
+  -- 🛠️ LSP
   { "neovim/nvim-lspconfig" },
   { "williamboman/mason.nvim" },
   { "williamboman/mason-lspconfig.nvim" },
+
+  {
+  "folke/zen-mode.nvim",
+  cmd = "ZenMode",
+  opts = {
+    window = {
+      backdrop = 0.95,
+      width = 120,
+      height = 1,
+      options = {
+        signcolumn = "no",
+        number = false,
+        relativenumber = false,
+        cursorline = false,
+        foldcolumn = "0",
+        list = false,
+      },
+    },
+    plugins = {
+      options = {
+        enabled = true,
+        ruler = false,
+        showcmd = false,
+        laststatus = 0,
+      },
+      twilight = { enabled = true },
+      gitsigns = { enabled = false },
+      tmux = { enabled = false },
+    },
+  },
+},
+
+  -- 🧊 Dashboard
   {
     "goolord/alpha-nvim",
     config = function()
@@ -43,7 +96,7 @@ require("lazy").setup({
         dashboard.button("f", "󰈞  Find file", ":Telescope find_files<CR>"),
         dashboard.button("n", "  New file", ":ene <BAR> startinsert <CR>"),
         dashboard.button("r", "󰄉  Recent files", ":Telescope oldfiles<CR>"),
-        dashboard.button("e", "  Explorer", ":NvimTreeToggle<CR>"),
+        dashboard.button("e", "  Explorer", ":Neotree toggle<CR>"),
         dashboard.button("q", "  Quit NVIM", ":qa<CR>"),
       }
       dashboard.section.footer.val = "ShadowNvim | Now with LSP and Autocompletion ⚡"
