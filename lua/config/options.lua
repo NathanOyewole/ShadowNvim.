@@ -6,3 +6,6 @@ vim.opt.expandtab = true
 vim.opt.termguicolors = true
 vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
+vim.opt.autoindent = true
+vim.opt.smarttab = true
+vim.opt.softtabstop = 4
